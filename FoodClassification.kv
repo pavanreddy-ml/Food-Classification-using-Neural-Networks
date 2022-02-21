@@ -1,0 +1,287 @@
+<Boxes>:
+
+    canvas:
+        Color:
+            rgba: 47/255, 59/255, 82/255, 1
+
+        Rectangle:
+            pos: root.width * 522/800, root.height * (1 - 326/520)
+            size: root.width * 273/800, root.height * 157/520
+
+        Rectangle:
+            pos: root.width * 522/800, root.height * (1 - 516/520)
+            size: root.width * 273/800, root.height * 180/520
+
+
+        Color:
+            rgba: 27/255, 36/255, 52/255, 1
+
+        Rectangle:
+            pos: root.width * 529/800, root.height * (1 - 319/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 529/800, root.height * (1 - 284/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 529/800, root.height * (1 - 249/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 617/800, root.height * (1 - 319/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 617/800, root.height * (1 - 284/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 617/800, root.height * (1 - 249/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 705/800, root.height * (1 - 319/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 705/800, root.height * (1 - 284/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 705/800, root.height * (1 - 249/520)
+            size: root.width * 83/800, root.height * 30/520
+
+        Rectangle:
+            pos: root.width * 529/800, root.height * (1 - 509/520)
+            size: root.width * 259/800, root.height * 123/520
+
+
+
+
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+		FloatLayout:
+
+		    GridLayout:
+		        cols: 2
+		        pos_hint: {'x': 522/800, 'y': 1 - 49/520}
+                size_hint: 273/800, 45/520
+                background_normal: ''
+
+                spacing:3
+
+
+                Button:
+                    id: Random
+                    text: 'Generate\nRandom'
+                    color: {'normal': (173/255, 191/255, 220/255, 1), 'down': (1, 1, 1, 1)} [self.state]
+                    canvas.before:
+                        Color:
+                            rgba: {'normal': (45/255, 158/255, 194/255, 1), 'down': (0, 0, 0, 1)} [self.state]
+                        Line:
+                            width: {'normal': 1.2, 'down': 0.6} [self.state]
+                            rectangle: self.x, self.y, self.width, self.height
+                    background_normal: ''
+                    background_color: {'normal': (27/255, 36/255, 52/255, 1), 'down': (227/255, 246/255, 240/255, 1)} [self.state]
+                    on_press: root.generate_random(self)
+
+
+
+
+                Button:
+                    id: Upload
+                    text: 'Upload\nImage'
+                    color: {'normal': (173/255, 191/255, 220/255, 1), 'down': (1, 1, 1, 1)} [self.state]
+                    canvas.before:
+                        Color:
+                            rgba: {'normal': (45/255, 158/255, 194/255, 1), 'down': (0, 0, 0, 1)} [self.state]
+                        Line:
+                            width: {'normal': 1.2, 'down': 0.6} [self.state]
+                            rectangle: self.x, self.y, self.width, self.height
+                    background_normal: ''
+                    background_color: {'normal': (27/255, 36/255, 52/255, 1), 'down': (227/255, 246/255, 240/255, 1)} [self.state]
+                    on_press: root.upload_image(self)
+
+
+    BoxLayout:
+        orientation: "vertical"
+		size: root.width, root.height
+
+        FloatLayout:
+
+		    GridLayout:
+		        cols: 1
+		        pos_hint: {'x': 522/800, 'y': 1 - 104/520}
+                size_hint: 273/800, 45/520
+
+                spacing:3
+
+                Image:
+                    id: img
+                    source: ""
+
+
+
+
+    BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+        FloatLayout:
+
+		    GridLayout:
+		        cols: 2
+		        pos_hint: {'x': 522/800, 'y': 1 - 159/520}
+                size_hint: 273/800, 45/520
+                background_normal: ''
+
+                spacing:3
+
+
+                Button:
+                    id: Predict
+                    text: 'Predict'
+                    color: {'normal': (173/255, 191/255, 220/255, 1), 'down': (1, 1, 1, 1)} [self.state]
+                    canvas.before:
+                        Color:
+                            rgba: {'normal': (45/255, 158/255, 194/255, 1), 'down': (0, 0, 0, 1)} [self.state]
+                        Line:
+                            width: {'normal': 1.2, 'down': 0.6} [self.state]
+                            rectangle: self.x, self.y, self.width, self.height
+                    background_normal: ''
+                    background_color: {'normal': (27/255, 36/255, 52/255, 1), 'down': (227/255, 246/255, 240/255, 1)} [self.state]
+                    on_press: root.predict(self)
+
+
+
+    RelativeLayout:
+        Label:
+            id: pred1
+            pos: root.width * 521/800, root.height * (1 - 283/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+
+        Label:
+            id: pred2
+            pos: root.width * 521/800, root.height * (1 - 318/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+
+        Label:
+            id: pred3
+            pos: root.width * 521/800, root.height * (1 - 353/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+
+        Label:
+            id: Prob1
+            pos: root.width * 609/800, root.height * (1 - 283/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+
+        Label:
+            id: Prob2
+            pos: root.width * 609/800, root.height * (1 - 318/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+
+        Label:
+            id: Prob3
+            pos: root.width * 609/800, root.height * (1 - 353/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+
+        Label:
+            id: TF1
+            pos: root.width * 693/800, root.height * (1 - 283/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+            color: 1, 1, 1, 1
+
+        Label:
+            id: TF2
+            pos: root.width * 693/800, root.height * (1 - 318/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+            color: 1, 1, 1, 1
+
+        Label:
+            id: TF3
+            pos: root.width * 693/800, root.height * (1 - 353/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: '-'
+            color: 1, 1, 1, 1
+
+        Label:
+            pos: root.width * 521/800, root.height * (1 - 249/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: 'PRED'
+            bold: True
+            font_size: self.height * 0.22
+
+        Label:
+            pos: root.width * 609/800, root.height * (1 - 249/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: 'PROB'
+            bold: True
+            font_size: self.height * 0.22
+
+        Label:
+            pos: root.width * 693/800, root.height * (1 - 249/520)
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            text: 'T/F'
+            bold: True
+            font_size: self.height * 0.22
+
+        Label:
+            pos: root.width * 609/800, root.height * (1 - 411/520)
+            halign: 'center'
+            valign: 'middle'
+            text: 'DESCRIPTION'
+            bold: True
+            font_size: self.height * 0.28
+
+        Label:
+            id: desc_text
+            pos: root.width * 533/800, root.height * (1 - 493/520)
+            text_size: self.size
+            halign: 'left'
+            valign: 'top'
+            text: 'Currently Unavailable\nComing Soon'
+
+        Label:
+            id: drag_drop
+            pos: root.width * 609/800, root.height * (1 - 130/520)
+            halign: 'center'
+            valign: 'middle'
+            text: 'Drop Image Here'
+            color: 0, 0, 0, 1
+            index: 1
+            font_size: self.height * 0.22
